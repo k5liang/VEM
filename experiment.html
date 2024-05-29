@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VEM</title>
+    <script src="https://unpkg.com/jspsych@7.3.4"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.2.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-slider-response@1.1.3"></script>
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      var jsPsych = initJsPsych();
+
+      var timeline = [];
+
+      var preload = {
+        type: jsPsychPreload,
+        images: ['img/relationship_1.png', 'img/relationship_2.png', 'img/relationship_3.png', 'img/relationship_4.png', 'img/relationship_5.png']
+      };      
+
+      timeline.push(preload);
+
+      var welcome = {
+        type: jsPsychHtmlKeyboardResponse,
+        prompt: "<p>Welcome to the experiment. Press any key to begin.</p>"
+      }; 
+
+      timeline.push(welcome);
+
+      var instructions = {
+        type: jsPsychHtmlKeyboardResponse,
+        prompt:"<p>In this experiment, you will read descriptions of 5 different relationships. After reading each description, you will answer several questions. Press any key to begin.</p>"
+      };  
+
+      timeline.push(instructions);
+
+      var relationship_1_trial_1 = {
+        type: jsPsychImageButtonResponse,
+        stimulus: 'img/relationship_1.png',
+        stimulus_height: 600,
+        stimulus_width: 1100,
+        prompt: "<p>James and Sarah are siblings who still live in the same city as adults. They are very close and care about each other a lot.</p>",
+        choices: ['Next'],
+      };
+
+      timeline.push(relationship_1_trial_1);
+
+      var relationship_1_trial_1_wheel = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Sarah plays a gambling game, with the odds as depicted on the wheel.</p>",  
+        choices: ['Next'],
+      };
+
+      timeline.push(relationship_1_trial_1_wheel);
+
+      var relationship_1_trial_1_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_1.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Sarah feels about her outcome?</p>"},
+        {prompt: "<p>James sees Sarah play. How do you think he feels about her outcome?</p>"}
+        ],   
+        randomize_order: true,   
+        choices: ['Next'], 
+      };
+
+      timeline.push(relationship_1_trial_1_slider);
+
+      var relationship_1_trial_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>James plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],
+      }
+
+      timeline.push(relationship_1_trial_2);
+
+      var relationship_1_trial_2_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_1.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think James feels about his outcome?</p>"},
+        {prompt: "<p>Sarah sees James play. How do you think she feels about his outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_1_trial_2_slider);
+
+      var relationship_2_trial_1 = {
+        type: jsPsychImageButtonResponse,
+        stimulus: 'img/relationship_2.png',
+        stimulus_height: 600,
+        stimulus_width: 1100,
+        prompt: "<p>Brian and Jessica are friends. They regularly talk to each other about what is going on in their lives and do things together with other friends.</p>",
+        choices: ['Next'],      
+      };
+
+      timeline.push(relationship_2_trial_1);
+
+      var relationship_2_trial_1_wheel = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Brian plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],  
+      };
+
+      timeline.push(relationship_2_trial_1_wheel);
+
+      var relationship_2_trial_1_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_2.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Brian feels about his outcome?</p>"},
+        {prompt: "<p>Jessica sees Brian play. How do you think she feels about his outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_2_trial_1_slider);
+
+      var relationship_2_trial_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Jessica plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],
+      }
+
+      timeline.push(relationship_2_trial_2);
+
+      var relationship_2_trial_2_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_2.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,    
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Jessica feels about her outcome?</p>"},
+        {prompt: "<p>Brian sees Jessica play. How do you think he feels about her outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_2_trial_2_slider);
+
+      var relationship_3_trial_1 = {
+        type: jsPsychImageButtonResponse,
+        stimulus: 'img/relationship_3.png',
+        stimulus_height: 600,
+        stimulus_width: 1100,
+        prompt: "<p>Stephanie and Adam are coworkers who have finished several projects together. They like and respect one another, though they aren’t friends outside of work.</p>",
+        choices: ['Next'],
+      };
+
+      timeline.push(relationship_3_trial_1);
+
+      var relationship_3_trial_1_wheel = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Adam plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],  
+      };
+
+      timeline.push(relationship_3_trial_1_wheel);
+
+      var relationship_3_trial_1_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_3.png',
+            stimulus_height: 600,
+            stimulus_width: 1100, 
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Adam feels about his outcome?</p>"},
+        {prompt: "<p>Stephanie sees Adam play. How do you think she feels about his outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_3_trial_1_slider);
+
+      var relationship_3_trial_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Stephanie plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],
+      }
+
+      timeline.push(relationship_3_trial_2);
+
+      var relationship_3_trial_2_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_3.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Stephanie feels about her outcome?</p>"},
+        {prompt: "<p>Adam sees Stephanie play. How do you think he feels about her outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_3_trial_2_slider);
+
+      var relationship_4_trial_1 = {
+        type: jsPsychImageButtonResponse,
+        stimulus: 'img/relationship_4.png',
+        stimulus_height: 600,
+        stimulus_width: 1100,        
+        prompt: "<p>Allison and Derek are strangers who live in the same city but have never met. They have no particular concern for one another.</p>",
+        choices: ['Next'],
+      };
+
+      timeline.push(relationship_4_trial_1);
+
+      var relationship_4_trial_1_wheel = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Allison plays a gambling game, with the odds as depicted on the wheel.</p>",  
+      };
+
+      timeline.push(relationship_4_trial_1_wheel);
+
+      var relationship_4_trial_1_slider = {
+        type: jsPsychImageSliderResponse,
+        choices: ['Next'],
+        timeline: [
+            {
+            stimulus: 'img/relationship_4.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Allison feels about her outcome?</p>"},
+        {prompt: "<p>Derek sees Allison play. How do you think he feels about her outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_4_trial_1_slider);
+
+      var relationship_4_trial_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Derek plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],
+      }
+
+      timeline.push(relationship_4_trial_2);
+
+      var relationship_4_trial_2_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_4.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Derek feels about his outcome?</p>"},
+        {prompt: "<p>Stephanie sees Derek play. How do you think she feels about his outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_4_trial_2_slider);
+
+      var relationship_5_trial_1 = {
+        type: jsPsychImageButtonResponse,
+        stimulus: 'img/relationship_5.png',
+        stimulus_height: 600,
+        stimulus_width: 1100,
+        prompt: "<p>Zach and Katelyn are neighbors. They dislike each other because they believe the other to be nosy and careless.</p>",
+        choices: ['Next'],
+      };
+
+      timeline.push(relationship_5_trial_1);
+
+      var relationship_5_trial_1_wheel = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Katelyn plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],  
+      };
+
+      timeline.push(relationship_5_trial_1_wheel);
+
+      var relationship_5_trial_1_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_5.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Katelyn feels about her outcome?</p>"},
+        {prompt: "<p>Zach sees Katelyn play. How do you think he feels about her outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_5_trial_1_slider);
+
+      var relationship_5_trial_2 = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<p>Placeholder for movingCircles.html content</p>',
+        prompt: "<p>Zach plays a gambling game, with the odds as depicted on the wheel.</p>",
+        choices: ['Next'],
+      }
+
+      timeline.push(relationship_5_trial_2);
+
+      var relationship_5_trial_2_slider = {
+        type: jsPsychImageSliderResponse,
+        timeline: [
+            {
+            stimulus: 'img/relationship_5.png',
+            stimulus_height: 600,
+            stimulus_width: 1100,
+            min: 1,
+            max: 10,
+            step: 1,
+            labels: ['Not at all', 'Extremely'],
+            }
+        ],
+        timeline_variables: [
+        {prompt: "<p>How do you think Zach feels about his outcome?</p>"},
+        {prompt: "<p>Katelyn sees Zach play. How do you think she feels about his outcome?</p>"}
+        ],   
+        randomize_order: true,
+        choices: ['Next'],    
+      };
+
+      timeline.push(relationship_5_trial_2_slider);
+
+      var closing = {
+        type: jsPsychHtmlKeyboardResponse,
+        prompt: "<p>The experiment has concluded. Thank you for your participation.</p>" 
+      };
+
+      jsPsych.run(timeline);
+    </script>
+  </body>
+</html>
